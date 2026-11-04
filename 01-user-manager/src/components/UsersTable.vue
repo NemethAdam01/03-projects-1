@@ -1,8 +1,14 @@
 <script setup>
 import { useUserStore } from '../../store/user.js'
 import EditUserModal from './EditUserModal.vue'
+import { ref } from 'vue'
 
 const { users, removeUser } = useUserStore()
+const selectedUser = ref({})
+
+function handleSelectUser(user) {
+  selectedUser.value = { ...user }
+}
 
 async function handleDeleteClick(userId) {
   try {
@@ -34,7 +40,8 @@ async function handleDeleteClick(userId) {
             type="button"
             class="btn btn-primary"
             data-bs-toggle="modal"
-            data-bs-target="#editUserModal">
+            data-bs-target="#editUserModal"
+            @click="handleSelectUser(user)">
             Edit
           </button>
           <button class="btn btn-danger" @click="handleDeleteClick(user.id)">Delete</button>
@@ -43,7 +50,7 @@ async function handleDeleteClick(userId) {
     </tbody>
   </table>
 
-  <EditUserModal/>
+  <EditUserModal v-if="selectedUser" :user="selectedUser"/>
 </template>
 
 <style></style>
