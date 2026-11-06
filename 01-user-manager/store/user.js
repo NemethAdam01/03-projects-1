@@ -24,7 +24,12 @@ export  function useUserStore() {
     // create
     async function addUser(user){
         const response = await createUser(user)
-        users.value = [...users.value, response]
+        users.value = [response, ...users.value]
+    }
+
+    async function searchUser(name){
+        const response = await getUsers(name)
+        users.value = response
     }
 
     return {
@@ -32,6 +37,7 @@ export  function useUserStore() {
         fetchUsers,
         removeUser,
         modifyUser,
-        addUser
+        addUser,
+        searchUser
     };
 }
