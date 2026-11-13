@@ -1,5 +1,5 @@
 <script setup>
-import {searchUser} from '../../store/user.js';
+import {} from '../../store/user.js';
 import { ref } from 'vue';  
 
 const searchQuery = ref('');
