@@ -1,5 +1,7 @@
 import { ref } from 'vue'
+import { useToast } from 'vue-toastification'
 
+const toast = useToast()
 const guitars = ref([])
 
 export function useGuitarStore() {
@@ -11,6 +13,7 @@ export function useGuitarStore() {
             }
             guitars.value = await response.json()
         } catch (error) {
+            toast.error(error.message)
             console.error('Error fetching guitars:', error)
         }
     }
