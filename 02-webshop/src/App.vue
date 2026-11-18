@@ -1,6 +1,7 @@
 <script setup>
 //import { RouterLink, RouterView } from 'vue-router'
 import { useGuitarStore } from './store/guitars.js'
+import MainNavigation from './components/MainNavigation.vue'
 import { onMounted } from 'vue'
 
 const { guitars, fetchGuitars } = useGuitarStore()
@@ -12,9 +13,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div></div>
+  <div>
+    <MainNavigation />
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
