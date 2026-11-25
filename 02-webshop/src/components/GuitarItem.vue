@@ -13,7 +13,11 @@ defineProps({
         <div class="left-column">
             <GuitarImage :title="guitar.title"/>
         </div>
-        <div class="right-column"></div>
+        <div class="right-column">
+            <h2>{{ guitar.title }}</h2>
+            <p>{{ guitar.description }}</p>
+            <p>{{ guitar.price }}$</p>
+        </div>
     </div>
 </template>
 
